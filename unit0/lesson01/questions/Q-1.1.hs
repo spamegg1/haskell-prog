@@ -1,0 +1,6 @@
+-- Q1.1 In GHCi, find out what 2 123 is.
+--  ➜ ghci
+-- GHCi, version 8.6.5: http://www.haskell.org/ghc/  :? for help
+-- Prelude> 2^123
+-- 10633823966279326983230456482242756608
+-- Prelude>
