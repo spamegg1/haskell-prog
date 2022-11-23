@@ -1,0 +1,1 @@
+data RhType = Pos | Neg

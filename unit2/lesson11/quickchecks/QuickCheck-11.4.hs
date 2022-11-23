@@ -1,0 +1,13 @@
+-- The type signature for map is as follows:
+-- map :: (a -> b) -> [a] -> [b]
+-- Why couldn’t it be this?
+-- map :: (a -> a) -> [a] -> [a]?
+-- Hint: Fill in the type variables for myMap show [1,2,3,4].
+
+-- answer map:: (a -> a) -> [a] -> [a] would mean that
+-- map must always return the same type as it currently is.
+-- In this case, you couldn’t perform
+-- map show [1,2,3,4]
+-- because show returns a type String that isn’t consistent
+-- with the original type. The real power of map isn’t iteration,
+-- but transforming a list of one type into a list of another type.

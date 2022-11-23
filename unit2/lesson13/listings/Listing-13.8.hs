@@ -1,0 +1,1 @@
+data Icecream = Chocolate | Vanilla

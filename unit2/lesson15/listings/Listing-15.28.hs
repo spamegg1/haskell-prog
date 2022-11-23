@@ -1,0 +1,1 @@
+data OneTimePad = OTP String

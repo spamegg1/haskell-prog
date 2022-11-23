@@ -1,0 +1,2 @@
+myPad :: String
+myPad = "Shhhhhh"
