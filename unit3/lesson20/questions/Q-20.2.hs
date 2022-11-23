@@ -1,0 +1,3 @@
+-- Create a function that calculates the div rather than the diff of data,
+-- capturing the percent change.
+-- TODO

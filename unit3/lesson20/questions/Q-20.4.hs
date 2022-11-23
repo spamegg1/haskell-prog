@@ -1,0 +1,4 @@
+-- If you still want more, the next most useful task is to add and subtract
+-- time series from each other. For each point in the timeline that two
+-- TS types have in common, you add or subtract the values as necessary.
+-- TODO

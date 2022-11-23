@@ -1,0 +1,2 @@
+-- Implement a function for calculating the standard deviation of a TS type.
+-- TODO

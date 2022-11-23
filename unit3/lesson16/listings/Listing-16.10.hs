@@ -1,0 +1,1 @@
+-- data Creator = AuthorCreator Author | ArtistCreator Artist

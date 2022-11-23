@@ -1,0 +1,1 @@
+data Triple a = Triple a a a deriving Show

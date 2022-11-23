@@ -1,0 +1,2 @@
+-- Use the median rather than the mean for smoothing.
+-- TODO
