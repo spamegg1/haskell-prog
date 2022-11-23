@@ -1,0 +1,12 @@
+-- fastRobot = robot ("speedy", 15, 40)
+-- slowRobot = robot ("slowpoke", 20, 30)
+-- fastRobotRound1 = fight slowRobot fastRobot
+-- slowRobotRound1 = fight fastRobot slowRobot
+-- fastRobotRound2 = fight slowRobotRound1 fastRobotRound1
+-- slowRobotRound2 = fight fastRobotRound1 slowRobotRound1
+-- fastRobotRound3 = fight slowRobotRound2 fastRobotRound2
+-- slowRobotRound3 = fight fastRobotRound2 slowRobotRound2
+-- GHCi> printRobot fastRobotRound3
+-- "speedy attack:15 hp:0"
+-- GHCi> printRobot slowRobotRound3
+-- "slowpoke attack:20 hp:0"

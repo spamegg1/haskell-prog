@@ -1,0 +1,12 @@
+-- Create a list of three robots. Then create a fourth robot.
+-- Use partial application to create a closure for the fight method so
+-- the fourth robot can fight all three robots at once, using map .
+-- Finally, use map to get the remaining life from the rest of the robots.
+
+-- firstRobot = robot ("speedy", 15, 40)
+-- secondRobot = robot ("slowpoke", 20, 30)
+-- thirdRobot = robot ("third", 5, 60)
+-- robots = [firstRobot, secondRobot, thirdRobot]
+-- fourthRobot = robot ("warrior", 20, 50)
+-- afterFight = map (\r -> fight fourthRobot r) robots
+-- map getHP afterFight

@@ -1,0 +1,3 @@
+-- GHCi> "h":"ello" -- Error!
+-- GHCi> ['h']:['e','l','l','o']
+-- GHCi> 'h':[]:'e':'l':'l':'o':[]

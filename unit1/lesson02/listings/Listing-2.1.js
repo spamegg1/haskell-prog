@@ -1,0 +1,5 @@
+tick()
+
+if (timeToReset) {
+    reset()
+}
