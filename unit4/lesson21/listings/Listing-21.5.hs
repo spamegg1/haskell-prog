@@ -1,0 +1,1 @@
+type Pizza = (Double, Double)

@@ -1,0 +1,8 @@
+-- Another challenge you didn’t tackle is dealing with an annoying non-Unicode
+-- character encoding that exists in a large number of MARC records called
+-- MARC-8. In MARC-8, a small subset of the Unicode characters is represented
+-- differently for historical reasons. The LoC has resources to add in this
+-- conversion: www.loc.gov/marc/specifications/ speccharconversion.html.
+-- Whether a record is encoded in MARC-8 or standard Unicode can be determined
+-- from the leader. See the “Character Coding Scheme” section of the official
+-- LoC documentation: www.loc.gov/marc/bibliographic/bdleader.html.

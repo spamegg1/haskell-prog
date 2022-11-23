@@ -1,0 +1,8 @@
+-- Now that you know the basics of processing MARC records, there’s a world of
+-- interesting book data out there to explore. If you’d like to extend this
+-- exercise, look into fleshing out more of the details of processing the MARC
+-- record. For example, you may have noticed that trailing punctuation sometimes
+-- appears after our title. This is because a subfield b contains the rest of
+-- the extended title. Combining subfields a and b will give you the full title.
+-- The Library of Congress (LoC) provides extensive information on
+-- MARC records, and you can start exploring at www.loc.gov/marc/bibliographic/.
