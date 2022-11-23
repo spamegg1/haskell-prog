@@ -1,0 +1,5 @@
+-- Now that you have the basics of your HINQ queries down, try to extend them
+-- the Haskell way! See if you can implement Semigroup and Monoid for HINQ. For
+-- Monoid , you might have to refactor your HINQ type to include the empty
+-- query. If you can define Monoid for HINQ , you can concatenate a list of HINQ
+-- queries into a single query!

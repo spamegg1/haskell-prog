@@ -1,0 +1,72 @@
+maybeInc :: Maybe (Int -> Int)
+maybeInc = (+) <$> Just 1
+-- let's understand this:
+-- (+) has type Num a => a -> a -> a
+-- fmap has type Functor f => (a -> b) -> f a -> f b
+-- here (+)'s type a -> a will be "fit into" the first input of fmap: (a -> b)
+-- so (a -> b) will be (a -> (a -> a)),
+-- therefore f a -> f b will be f a -> f (a -> a)
+-- so fmap (+) has type (Num a, Functor f) => f a -> f (a -> a)
+-- now the input Just 1 will be "fit into" the type f a
+-- so f = Maybe and a = Int
+-- so (+) <$> Just 1 = fmap (+) (Just 1) has type
+-- f (a -> a) = Maybe (Int -> Int)
+
+-- GHCi> maybeInc <*> Just 5
+-- Just 6
+-- GHCi> maybeInc <*> Nothing
+-- Nothing
+-- GHCi> maybeInc <*> Just 100
+-- Just 101
+
+-- now let's understand this:
+-- maybeInc <*> Just 5 is syntactic sugar for: (<*>) maybeInc (Just 5)
+-- (<*>) has type Applicative f => f (a -> b) -> f a -> f b
+-- the first input of (<*>) has type f (a -> b), this needs to match maybeInc
+-- maybeInc has type Maybe (Int -> Int)
+-- so f (a -> b) = Maybe (Int -> Int), so f = Maybe and a = b = Int
+-- second input of (<*>) has type f a = Maybe Int, which fits (Just 5) perfectly
+-- so the return value has type f b = Maybe Int.
+-- so maybeInc <*> Just 5 = (<*>) maybeInc (Just 5) has type Maybe Int.
+
+-- GHCi> (++) <$> Just "cats" <*> Just " and dogs"
+-- Just "cats"
+-- GHCi> (++) <$> Nothing <*> Just " and dogs"
+-- Nothing
+-- GHCi> (++) <$> Just "cats" <*> Nothing
+-- Nothing
+-- GHCi> (++) <$> Just "cats" <*> ( (++) <$> Just " and dogs" <*> Just " and mice" )
+-- Just "cats and dogs and mice"
+
+-- Let's understand the first one:
+-- (++) <$> Just "cats" <*> Just " and dogs" = Just "cats"
+-- (++) <$> Just "cats" <*> Just " and dogs" is the same as:
+-- (<*>) (fmap (++) Just "cats") (Just " and dogs") which is the same as:
+-- fmap has type: Functor f => (a -> b) -> f a -> f b
+-- (++) has type: [c] -> [c] -> [c] (I renamed a to c to avoid clash)
+-- this has to match the first input type of fmap.
+-- so (a -> b) has to match [c] -> [c] -> [c]
+-- so a = [c] and b = [c] -> [c]
+-- Just "cats" has type Maybe [Char]
+-- this has to match the second input type of fmap.
+-- so Maybe [Char] has to match f a
+-- so f = Maybe and a = [Char]. This means c = Char and b = [Char] -> [Char]
+-- So fmap (++) Just "cats" has type f b = Maybe ([Char] -> [Char])
+-- (<*>) has type: Applicative f => f (a -> b) -> f a -> f b
+-- First input is fmap (++) Just "cats" which has type: Maybe ([Char] -> [Char])
+-- This has to match the first input type of (<*>): f (a -> b)
+-- So f = Maybe, a = b = [Char]
+-- (Just " and dogs") has type Maybe [Char]
+-- which correctly matches second input of (<*>): f a
+-- so the overall output will be f b = Maybe [Char]
+-- so the overall expression is:
+-- (<*>) (fmap (++) Just "cats") (Just " and dogs") =
+-- Applicative Maybe => Maybe ([Char] -> [Char]) -> Maybe [Char] -> Maybe [Char]
+-- (<*>) (Maybe ([Char] -> [Char])) (Maybe [Char]) = Maybe [Char]
+
+-- generally speaking:
+-- (func of type a -> a -> a) <$> (value of type f a) <*> (value of type f a)
+-- (func of type a -> a -> a) <$> (value of type f a) <*> (
+--     (func of type a -> a -> a) <$> (value of type f a) <*> (value of type f a) )
+-- The pattern is:
+-- fun <$> val <*> (fun <$> val <*> (...))
