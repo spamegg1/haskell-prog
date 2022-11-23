@@ -1,0 +1,11 @@
+-- If you wanted to keep your Palindrome module named Palindrome and in the
+-- original Palindrome.hs file, what would you have to change about your .cabal
+-- file?
+
+-- Answer:
+-- Change the exposed-modules value to Palindrome:
+-- library
+--   hs-source-dirs:
+--     src
+--   exposed-modules:
+--     Palindrome
